@@ -1,39 +1,35 @@
-import { Card, Icon, Image } from "semantic-ui-react";
 import a from "../../img/a.png";
 import { useState, useEffect } from "react";
 import "./content.css";
 
 export default function Content({ data }) {
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
-  const [summary, setSummary] = useState("");
-  const [rating, setRating] = useState("Unrated");
+  const [name, setName] = useState("Title: N/A");
+  const [date, setDate] = useState("Premier: N/A");
+  const [summary, setSummary] = useState("Summary: N/A");
+  const [rating, setRating] = useState("Not Rated");
   const [image, setImage] = useState(a);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("Status: N/A");
   const [endDate, setEndDate] = useState("");
-  const [genre, setGenre] = useState("");
-  const [language, setLanguage] = useState("");
+  const [genre, setGenre] = useState("Genre: N/A");
+  const [language, setLanguage] = useState("Language: N/A");
   const [cname, setCName] = useState("");
-  const [runtime, setRuntime] = useState("");
+  const [runtime, setRuntime] = useState("Runtime: N/A");
+
+  const locale = navigator.language;
+  const options = {
+    month: "long",
+    year: "numeric",
+    day: "numeric",
+  };
 
   function formatDate(date) {
-    const locale = navigator.language;
-    const options = {
-      month: "long",
-      year: "numeric",
-      day: "numeric",
-    };
     const d = new Date(date);
-    setDate(new Intl.DateTimeFormat(locale, options).format(d));
+    setDate(
+      "Premiered on " + new Intl.DateTimeFormat(locale, options).format(d)
+    );
   }
 
   function formatEndDate(date) {
-    const locale = navigator.language;
-    const options = {
-      month: "long",
-      year: "numeric",
-      day: "numeric",
-    };
     const d = new Date(date);
     setEndDate(" on " + new Intl.DateTimeFormat(locale, options).format(d));
   }
@@ -49,7 +45,7 @@ export default function Content({ data }) {
       str = str + genre[i] + ", ";
     }
     str = str + genre[genre.length - 1];
-    setGenre(str);
+    if (str !== "undefined") setGenre(str);
   }
 
   function formatSummary(summary) {
@@ -77,7 +73,7 @@ export default function Content({ data }) {
     if (data.show.language) setLanguage("Language: " + data.show.language);
     if (data.show.runtime) setRuntime("Runtime: " + data.show.runtime + " min");
     if (data.show.network)
-      if (data.show.country)
+      if (data.show.network.country)
         if (data.show.network.country.name)
           setCName(" (" + data.show.network.country.name + ")");
   }, []);
@@ -93,10 +89,13 @@ export default function Content({ data }) {
           <div className="premier">{date}</div>
           <div className="genre">{genre}</div>
           <div className="summary">{summary}</div>
-          <div className="language">{language}</div>
+          <div className="language">
+            {language}
+            {cname}
+          </div>
           <div className="runtime">{runtime}</div>
 
-          <div className="status">
+          <div className={status === "Ongoing" ? `red status` : "status"}>
             {status}
             {endDate}
           </div>

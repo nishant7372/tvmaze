@@ -5,10 +5,10 @@ import a from "../../img/a.png";
 import { Link } from "react-router-dom";
 
 export default function ShowCard({ idx, data, query }) {
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
-  const [summary, setSummary] = useState("");
-  const [rating, setRating] = useState("Unrated");
+  const [name, setName] = useState("Title: N/A");
+  const [date, setDate] = useState("Premier: N/A");
+  const [summary, setSummary] = useState("Summary: N/A");
+  const [rating, setRating] = useState("Not Rated");
   const [image, setImage] = useState(a);
 
   function formatDate(date) {
@@ -19,7 +19,9 @@ export default function ShowCard({ idx, data, query }) {
       day: "numeric",
     };
     const d = new Date(date);
-    setDate(new Intl.DateTimeFormat(locale, options).format(d));
+    setDate(
+      "Premiered on " + new Intl.DateTimeFormat(locale, options).format(d)
+    );
   }
 
   function formatSummary(summary) {
@@ -49,7 +51,7 @@ export default function ShowCard({ idx, data, query }) {
         <Card.Content>
           <Card.Header className="name">{name}</Card.Header>
           <Card.Meta>
-            <span className="date">Premiered on {date}</span>
+            <span className="date">{date}</span>
           </Card.Meta>
           <Card.Description className="white">{summary}</Card.Description>
         </Card.Content>
