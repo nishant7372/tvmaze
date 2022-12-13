@@ -1,0 +1,103 @@
+.nav-container {
+  transition: all 1s ease-in-out;
+  box-shadow: 0 2px 12px 4px rgba(0, 0, 0, 0.6);
+  background-color: rgba(25, 25, 25, 255);
+}
+
+.sticky {
+  transition: all 0.3s ease-in-out;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.2rem 0;
+  }
+  .leftSection {
+    padding-left: 0;
+  }
+  .rightSection {
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .navbar {
+    flex-direction: row;
+    padding: 10px;
+  }
+  .leftSection {
+    padding-left: 4rem;
+  }
+  .rightSection {
+    padding-right: 6rem;
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  min-width: max(33rem, 330px);
+  max-width: 140rem;
+  margin: auto;
+}
+
+.leftSection {
+  display: flex;
+  font-size: max(2.8rem, 22.4px);
+  font-weight: bold;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.leftSection img {
+  width: 4rem;
+  height: 4rem;
+  /* -webkit-filter: invert(1);
+  filter: invert(1); */
+}
+
+.rightSection {
+  font-size: max(2.5rem, 20px);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .rightSection a,
+.rightSection .btn {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  padding: 0.2rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.rightSection a {
+  color: rgba(255, 255, 255, 0.6);
+} */
+/* 
+.rightSection a:hover,
+.rightSection .btn:hover {
+  color: white;
+  transition: color 0.3s ease-in-out;
+} */
+
+/* .userName {
+  color: white;
+  font-size: max(2rem, 16px);
+} */
+
+.name {
+  padding-top: 0.4rem;
+}

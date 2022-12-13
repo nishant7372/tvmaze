@@ -1,0 +1,30 @@
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchBar input {
+  border-radius: 4px;
+  align-self: center;
+  border: none;
+  padding: 1rem 0.5rem;
+  width: 7rem;
+  font-size: 1.5rem;
+  text-align: left;
+  direction: ltr;
+  transition: width 300ms ease;
+  background-color: rgba(0, 0, 0, 0.942);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: white;
+}
+
+.searchBar input:focus {
+  width: min(200px, 18vw);
+  outline: none;
+}
+
+.searchBar img {
+  width: 4rem;
+  height: 4rem;
+}
