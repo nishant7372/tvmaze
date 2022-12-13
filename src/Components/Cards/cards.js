@@ -52,7 +52,9 @@ export default function Cards() {
 
   return (
     <div className="mainContainer">
-      {data && <div className="result">Results including "{query}"</div>}
+      {!error && data && (
+        <div className="result">Results including "{query}"</div>
+      )}
       {error && <div className="error">{error}</div>}
       {isPending && <div className="loading">Loading...</div>}
       {data && (
