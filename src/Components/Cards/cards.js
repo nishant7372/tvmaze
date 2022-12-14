@@ -6,6 +6,18 @@ import Spinner from "./Spinner";
 // import axios from "axios";
 
 export default function Cards() {
+  // const alertUser = (e) => {
+  //   e.preventDefault();
+  //   e.returnValue = "";
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener("beforeunload", alertUser);
+  //   return () => {
+  //     window.removeEventListener("beforeunload", alertUser);
+  //   };
+  // }, []);
+
   const queryString = useLocation().search;
   const queryParams = new URLSearchParams(queryString);
   const query = queryParams.get("q");
@@ -41,6 +53,8 @@ export default function Cards() {
         if (results.length == 0) {
           setError("No result found...");
           setIsPending(false);
+        } else {
+          setError(null);
         }
         setData(results);
         // console.log(results);
@@ -54,15 +68,17 @@ export default function Cards() {
 
   return (
     <div className="mainContainer">
-      {!error && data && (
-        <div className="result">Results including "{query}"</div>
-      )}
+      <div className="loading">
+        {isPending && (
+          <div className="spinner-loading">
+            <Spinner />
+          </div>
+        )}
+        {!error && data && (
+          <div className="result">Results including "{query}"</div>
+        )}
+      </div>
       {error && <div className="error">{error}</div>}
-      {isPending && (
-        <div className="loading">
-          <Spinner />
-        </div>
-      )}
       {data && (
         <ul className="cardContainer">
           {data.map((show, index) => (

@@ -1,7 +1,7 @@
 .nav-container {
   transition: all 1s ease-in-out;
   box-shadow: 0 2px 12px 4px rgba(0, 0, 0, 0.6);
-  background-color: rgba(25, 25, 25, 255);
+  background-color: rgba(25, 25, 25, 0.85);
 }
 
 .sticky {
@@ -11,7 +11,7 @@
   z-index: 2;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
   .navbar {
     flex-direction: column;
     gap: 2rem;
@@ -25,7 +25,7 @@
   }
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 500px) {
   .navbar {
     flex-direction: row;
     padding: 10px;
@@ -43,8 +43,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 0;
-  min-width: 25rem;
-  max-width: 140rem;
+  min-width: 20rem;
+  max-width: 150rem;
   margin: auto;
 }
 

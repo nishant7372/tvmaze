@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import "./showCard.css";
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,7 @@ export default function ShowCard({ idx, data, query }) {
   const [summary, setSummary] = useState("Summary: N/A");
   const [rating, setRating] = useState("Not Rated");
   const [image, setImage] = useState(require("../../img/tvshow.png"));
+  const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0); //force rerender
 
   function formatDate(date) {
     const locale = navigator.language;
@@ -41,8 +42,10 @@ export default function ShowCard({ idx, data, query }) {
     if (data.show.summary) formatSummary(data.show.summary);
     if (data.show.rating.average)
       setRating("Rating: " + data.show.rating.average + "/10");
-    if (data.show.image) setImage(data.show.image.original);
-  }, []);
+    if (data.show.image) setImage(data.show.image.medium);
+    else setImage(require("../../img/tvshow.png"));
+    forceUpdate();
+  }, [reducerValue]);
 
   return (
     <Link className="link" to={`/show/${query}@${idx}`}>

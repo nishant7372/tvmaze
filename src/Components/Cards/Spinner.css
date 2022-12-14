@@ -1,5 +1,5 @@
 #svg-spinner {
-  width: max(3rem, 25.5px);
+  width: max(3.5rem, 35.5px);
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-duration: 1s;
   -webkit-animation-name: rotate;

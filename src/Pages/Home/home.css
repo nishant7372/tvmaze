@@ -10,6 +10,15 @@
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 500px) {
+  .main {
+    font-size: 2rem !important;
+  }
+  .heading {
+    gap: 2rem !important;
+  }
+}
+
 .heading {
   display: flex;
   align-items: center;

@@ -7,7 +7,8 @@ export default function Searchbar() {
   const ref = useRef(null);
   const navigate = useNavigate();
   useEffect(() => {
-    navigate("/");
+    if (term === "") navigate("/");
+    else navigate(`/search?q=${term}`);
   }, [term]);
 
   return (
@@ -15,7 +16,6 @@ export default function Searchbar() {
       className="searchBar"
       onSubmit={(e) => {
         e.preventDefault();
-        navigate(`/search?q=${term}`);
         ref.current.value = "";
       }}
     >

@@ -5,8 +5,8 @@
   width: 80%;
   margin: 1rem auto;
   max-width: 140rem;
-  min-width: 10rem;
-  padding: 2rem;
+  min-width: 20rem;
+  padding: 2rem 0rem;
   grid-auto-rows: 1fr;
 }
 @media screen and (min-width: 1300px) {
@@ -29,17 +29,30 @@
   .cardContainer {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
+    width: 90%;
   }
   .result {
     font-size: 2rem !important;
   }
 }
 
-.error,
-.loading {
+.error {
   margin-top: 6rem;
   color: white;
   font-size: large;
+}
+
+.loading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  gap: 2rem;
+}
+
+.spinner-loading {
+  margin-top: 4rem;
 }
 
 .result {

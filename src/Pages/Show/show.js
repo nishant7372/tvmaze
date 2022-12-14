@@ -2,7 +2,21 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Content from "./content";
 import "./show.css";
+import Spinner from "../../Components/Cards/Spinner";
+
 export default function Show() {
+  // const alertUser = (e) => {
+  //   e.preventDefault();
+  //   e.returnValue = "";
+  // };
+
+  // useEffect(() => {
+  //   window.addEventListener("beforeunload", alertUser);
+  //   return () => {
+  //     window.removeEventListener("beforeunload", alertUser);
+  //   };
+  // }, []);
+
   const { id } = useParams();
   const [isPending, setIsPending] = useState(false);
   const [data, setData] = useState(null);
@@ -34,5 +48,15 @@ export default function Show() {
       });
   }, [id]);
 
-  return <div className="showInfo">{data && <Content data={data} />}</div>;
+  return (
+    <div className="showInfo">
+      {error && <div className="error">{error}</div>}
+      {isPending && (
+        <div className="loading">
+          <Spinner />
+        </div>
+      )}
+      {data && <Content data={data} />}
+    </div>
+  );
 }
