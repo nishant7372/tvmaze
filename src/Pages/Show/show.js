@@ -34,7 +34,7 @@ export default function Show() {
     fetch(`https://api.tvmaze.com/search/shows?q=${getQuery(id)}`)
       .then((res) => res.json())
       .then((results) => {
-        if (results.length == 0) {
+        if (results.length === 0) {
           setError("No result found...");
           setIsPending(false);
         }

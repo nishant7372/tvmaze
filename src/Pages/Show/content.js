@@ -34,8 +34,8 @@ export default function Content({ data }) {
   }
 
   function formatStatus(status) {
-    if (status == "Running") setStatus("Ongoing");
-    if (status == "Ended") setStatus(`Ended`);
+    if (status === "Running") setStatus("Ongoing");
+    if (status === "Ended") setStatus(`Ended`);
   }
 
   function formatGenre(genre) {

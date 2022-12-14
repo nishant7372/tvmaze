@@ -50,7 +50,7 @@ export default function Cards() {
     fetch(`https://api.tvmaze.com/search/shows?q=${query}`)
       .then((res) => res.json())
       .then((results) => {
-        if (results.length == 0) {
+        if (results.length === 0) {
           setError("No result found...");
           setIsPending(false);
         } else {
