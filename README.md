@@ -3,9 +3,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 <p display="flex">
-<img src="https://user-images.githubusercontent.com/91368799/207361499-588bc8a8-6260-4fbd-8811-da29f2e3d952.png" width="48%"/>
-<img src="https://user-images.githubusercontent.com/91368799/207360440-d891653c-87b4-4801-9304-13978fb8b6df.png" width="48%"/>
-<img src="https://user-images.githubusercontent.com/91368799/207360514-3dec68b1-c6e8-42f5-ab68-f87eee15b94e.png" width="96%"/>                                                                                                       
+<img src="https://user-images.githubusercontent.com/91368799/207660223-1e0bf6bb-60c4-44a8-8f0f-a0ad8bd9a1de.png" width="48%"/>
+<img src="https://user-images.githubusercontent.com/91368799/207659701-14ef7972-2335-478a-85ca-ea99a6063923.png" width="48%"/>
+<img src="https://user-images.githubusercontent.com/91368799/207659924-425c6bbc-2fce-4f73-9122-e8d21827691e.png" width="96%"/>                                                                                                       
 </p>
 
 ## Available Scripts
