@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ShowCard from "./showCard";
 import "./cards.css";
+import Spinner from "./Spinner";
 // import axios from "axios";
 
 export default function Cards() {
@@ -57,7 +58,11 @@ export default function Cards() {
         <div className="result">Results including "{query}"</div>
       )}
       {error && <div className="error">{error}</div>}
-      {isPending && <div className="loading">Loading...</div>}
+      {isPending && (
+        <div className="loading">
+          <Spinner />
+        </div>
+      )}
       {data && (
         <ul className="cardContainer">
           {data.map((show, index) => (
