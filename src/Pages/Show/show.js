@@ -14,8 +14,6 @@ export default function Show() {
     return parseInt(id.substring(id.indexOf("@") + 1, id.length));
   }
 
-  // console.log(getIndex(id));
-  // console.log(getQuery(id));
   useEffect(() => {
     setIsPending(true);
 
@@ -36,5 +34,5 @@ export default function Show() {
       });
   }, [id]);
 
-  return <div>{data && <Content data={data} />}</div>;
+  return <div className="showInfo">{data && <Content data={data} />}</div>;
 }

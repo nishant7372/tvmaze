@@ -1,5 +1,4 @@
 import styles from "./NavBar.module.css";
-import "./NavBar.css";
 import { useEffect, useState } from "react";
 import Searchbar from "./Searchbar";
 

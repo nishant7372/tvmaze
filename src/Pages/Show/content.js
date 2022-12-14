@@ -1,4 +1,3 @@
-import a from "../../img/a.png";
 import { useState, useEffect } from "react";
 import "./content.css";
 
@@ -7,12 +6,12 @@ export default function Content({ data }) {
   const [date, setDate] = useState("Premier: N/A");
   const [summary, setSummary] = useState("Summary: N/A");
   const [rating, setRating] = useState("Not Rated");
-  const [image, setImage] = useState(a);
+  const [image, setImage] = useState(require("../../img/tvshow.png"));
   const [status, setStatus] = useState("Status: N/A");
   const [endDate, setEndDate] = useState("");
   const [genre, setGenre] = useState("Genre: N/A");
   const [language, setLanguage] = useState("Language: N/A");
-  const [cname, setCName] = useState("");
+  const [countryName, setCountryName] = useState("");
   const [runtime, setRuntime] = useState("Runtime: N/A");
 
   const locale = navigator.language;
@@ -68,14 +67,15 @@ export default function Content({ data }) {
     if (data.show.image) setImage(data.show.image.original);
     if (data.show.ended) formatEndDate(data.show.ended);
     if (data.show.status) formatStatus(data.show.status);
-
     if (data.show.genres) formatGenre(data.show.genres);
     if (data.show.language) setLanguage("Language: " + data.show.language);
     if (data.show.runtime) setRuntime("Runtime: " + data.show.runtime + " min");
-    if (data.show.network)
-      if (data.show.network.country)
-        if (data.show.network.country.name)
-          setCName(" (" + data.show.network.country.name + ")");
+    if (
+      data.show.network &&
+      data.show.network.country &&
+      data.show.network.country.name
+    )
+      setCountryName(" (" + data.show.network.country.name + ")");
   }, []);
 
   return (
@@ -91,7 +91,7 @@ export default function Content({ data }) {
           <div className="summary">{summary}</div>
           <div className="language">
             {language}
-            {cname}
+            {countryName}
           </div>
           <div className="runtime">{runtime}</div>
 

@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { Card, Icon, Image } from "semantic-ui-react";
 import "./showCard.css";
-import a from "../../img/a.png";
 import { Link } from "react-router-dom";
 
 export default function ShowCard({ idx, data, query }) {
@@ -9,7 +7,7 @@ export default function ShowCard({ idx, data, query }) {
   const [date, setDate] = useState("Premier: N/A");
   const [summary, setSummary] = useState("Summary: N/A");
   const [rating, setRating] = useState("Not Rated");
-  const [image, setImage] = useState(a);
+  const [image, setImage] = useState(require("../../img/tvshow.png"));
 
   function formatDate(date) {
     const locale = navigator.language;
@@ -33,7 +31,9 @@ export default function ShowCard({ idx, data, query }) {
     summary = summary.replaceAll("<b>", " ");
     summary = summary.replaceAll("</b>", " ") + ".";
     summary = summary.replaceAll("amp;", " ") + ".";
-    setSummary(summary.substring(0, summary.indexOf(".")) + ".");
+    setSummary(
+      summary.substring(0, Math.min(100, summary.indexOf("."))) + "..."
+    );
   }
   useEffect(() => {
     if (data.show.name) setName(data.show.name);
@@ -45,21 +45,23 @@ export default function ShowCard({ idx, data, query }) {
   }, []);
 
   return (
-    <Link to={`/show/${query}@${idx}`}>
-      <Card className="showCard">
-        <Image src={image} wrapped ui={false} className="img" />
-        <Card.Content>
-          <Card.Header className="name">{name}</Card.Header>
-          <Card.Meta>
-            <span className="date">{date}</span>
-          </Card.Meta>
-          <Card.Description className="white">{summary}</Card.Description>
-        </Card.Content>
-        <div className="border-top"></div>
-        <Card.Content extra className="yellow">
-          {rating}
-        </Card.Content>
-      </Card>
+    <Link className="link" to={`/show/${query}@${idx}`}>
+      <div className="showCard">
+        <div className="leftSection-card">
+          <img src={image} alt={name} className="contentImg-card" />
+        </div>
+        <div className="rightSection-card">
+          <div className="subright1-card">
+            <div className="name-card">{name}</div>
+            <div className="card-premiere premier">{date}</div>
+            <div className="card-summary">{summary}</div>
+          </div>
+          <div className="subright2-card">
+            <div className="border-top-card"></div>
+            <div className="rating">{rating}</div>
+          </div>
+        </div>
+      </div>
     </Link>
   );
 }

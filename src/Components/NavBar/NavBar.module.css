@@ -43,7 +43,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.2rem 0;
-  min-width: max(33rem, 330px);
+  min-width: 25rem;
   max-width: 140rem;
   margin: auto;
 }
@@ -73,30 +73,6 @@
   align-items: center;
   justify-content: center;
 }
-
-/* .rightSection a,
-.rightSection .btn {
-  color: rgba(255, 255, 255, 0.6);
-  text-decoration: none;
-  padding: 0.2rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.rightSection a {
-  color: rgba(255, 255, 255, 0.6);
-} */
-/* 
-.rightSection a:hover,
-.rightSection .btn:hover {
-  color: white;
-  transition: color 0.3s ease-in-out;
-} */
-
-/* .userName {
-  color: white;
-  font-size: max(2rem, 16px);
-} */
 
 .name {
   padding-top: 0.4rem;

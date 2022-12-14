@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ShowCard from "./showCard";
 import "./cards.css";
-import axios from "axios";
+// import axios from "axios";
 
 export default function Cards() {
   const queryString = useLocation().search;
@@ -42,6 +42,7 @@ export default function Cards() {
           setIsPending(false);
         }
         setData(results);
+        // console.log(results);
         setIsPending(false);
       })
       .catch((err) => {

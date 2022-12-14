@@ -1,16 +1,70 @@
 .showCard {
-  justify-self: stretch !important;
-  align-self: stretch !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-color: rgba(0, 0, 0, 0.6) !important;
-  border: none !important;
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  color: white;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 4px;
+  min-width: 10rem;
+}
+
+@media screen and (max-width: 550px) {
+  .rightSection-card {
+    padding-bottom: 0rem !important;
+  }
+  .card-summary {
+    display: none;
+  }
+  .card-premiere {
+    display: none;
+  }
 }
 
 .showCard:hover {
   transform: scale(1.02);
   transition: all 0.4s ease;
 }
+
+.rightSection-card {
+  padding: 2rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  height: 45%;
+}
+
+.subright1-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 0 2rem;
+}
+
+.border-top-card {
+  border-top: 1px solid rgba(255, 255, 255, 0) !important;
+  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.495);
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.subright2-card {
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
+}
+
 /* @media screen and (min-width: 1100px) {
   .showCard {
     width: 100% !important;
@@ -35,9 +89,9 @@
   }
 } */
 
-.name {
-  padding-bottom: 6px;
-  color: white !important;
+.name-card {
+  color: white;
+  font-size: 1.8rem;
 }
 
 .white {
@@ -52,9 +106,16 @@
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-.border-top {
-  border-top: 1px solid rgba(255, 255, 255, 0) !important;
-  box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.495);
-  width: 80%;
-  margin: auto;
+.contentImg-card {
+  width: 100%;
+  height: 100%;
+}
+
+.leftSection-card {
+  width: 100%;
+  height: 55%;
+}
+
+.link {
+  text-decoration: none;
 }
