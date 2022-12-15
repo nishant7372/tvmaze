@@ -54,7 +54,7 @@ export default function Content({ data }) {
   function formatGenre(genre) {
     let str = "";
     for (let i = 0; i < genre.length - 1; i++) {
-      str = str + genre[i] + ", ";
+      str = str + genre[i] + " | ";
     }
     str = str + genre[genre.length - 1];
     if (str !== "undefined") return str;
