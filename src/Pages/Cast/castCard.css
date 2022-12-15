@@ -26,7 +26,10 @@
 }
 
 .castImage {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
   width: 100%;
+  height: 100%;
 }
 
 .lowerSection-castCard-cName {
@@ -34,6 +37,10 @@
   font-size: 1.2rem;
 }
 
+.invert {
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
 .lowerSection-castCard-pName {
   color: rgba(255, 255, 255);
   font-size: 1.4rem;
