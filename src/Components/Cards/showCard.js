@@ -32,6 +32,7 @@ export default function ShowCard({ idx, data, query }) {
         .replaceAll(`"`, " ")
         .replaceAll("<b>", " ")
         .replaceAll("</b>", " ")
+        .replaceAll("<br />", " ")
         .replaceAll("amp;", " ")
         .substring(0, Math.min(100, summary.length)) + "..."
     );

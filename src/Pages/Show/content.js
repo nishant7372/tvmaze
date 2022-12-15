@@ -1,13 +1,24 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 import "./content.css";
 
 export default function Content({ data }) {
+  const [viewMore, setViewMore] = useState(false);
+
+  function handleviewMore() {
+    setViewMore(true);
+  }
+
+  function handleviewLess() {
+    setViewMore(false);
+  }
+
   const initialValue = {
     name: "Title: N/A",
     id: "",
     date: "Premier: N/A",
     summary: "Summary: N/A",
+    fullSummary: "Summary: N/A",
     rating: "Not Rated",
     image: require("../../img/tvshow.png"),
     status: "Status: N/A",
@@ -58,6 +69,7 @@ export default function Content({ data }) {
       .replaceAll(`"`, " ")
       .replaceAll("<b>", " ")
       .replaceAll("</b>", " ")
+      .replaceAll("<br />", " ")
       .replaceAll("amp;", " ");
   }
 
@@ -66,6 +78,7 @@ export default function Content({ data }) {
     let id = "";
     let date = "Premier: N/A";
     let summary = "Summary: N/A";
+    let fullSummary = "Summary: N/A";
     let rating = "Not Rated";
     let image = require("../../img/tvshow.png");
     let status = "Status: N/A";
@@ -78,7 +91,13 @@ export default function Content({ data }) {
     if (data.show.name) name = data.show.name;
     if (data.show.id) id = data.show.id;
     if (data.show.premiered) date = formatDate(data.show.premiered);
-    if (data.show.summary) summary = formatSummary(data.show.summary);
+    if (data.show.summary)
+      summary =
+        formatSummary(data.show.summary).substring(
+          0,
+          Math.min(200, formatSummary(data.show.summary).length)
+        ) + "...";
+    if (data.show.summary) fullSummary = formatSummary(data.show.summary);
     if (data.show.rating.average)
       rating = "Rating: " + data.show.rating.average + "/10";
     if (data.show.image) image = data.show.image.original;
@@ -107,6 +126,7 @@ export default function Content({ data }) {
       language: language,
       runtime: runtime,
       countryName: countryName,
+      fullSummary: fullSummary,
     };
   }
 
@@ -114,14 +134,14 @@ export default function Content({ data }) {
 
   useEffect(() => {
     dispatch();
-  }, [data]);
+  }, [data, viewMore]);
 
   return (
     <div className="contentContainer">
-      <div className="leftSection">
+      <div className={viewMore ? `leftSection hidden` : `leftSection`}>
         <img src={show.image} alt={show.name} className="contentImg" />
       </div>
-      <div className="rightSection">
+      <div className={viewMore ? `rightSection full-width` : `rightSection`}>
         <div className="subright1">
           <div className="name">{show.name}</div>
           <Link to={`/cast/${show.id}`}>
@@ -129,7 +149,20 @@ export default function Content({ data }) {
           </Link>
           <div className="premier">{show.date}</div>
           <div className="genre">{show.genre}</div>
-          <div className="summary">{show.summary}</div>
+          <div className="summary">
+            {!viewMore && show.summary + " "}
+            {viewMore && show.fullSummary + " "}
+            {!viewMore && (
+              <a className="viewMoreButton" onClick={handleviewMore}>
+                view more
+              </a>
+            )}
+            {viewMore && (
+              <a className="viewMoreButton" onClick={handleviewLess}>
+                view less
+              </a>
+            )}
+          </div>
           <div className="language">
             {show.language}
             {show.countryName}

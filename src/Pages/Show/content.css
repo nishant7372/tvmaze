@@ -18,6 +18,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  transition: all 0.3s ease;
 }
 
 .subright1 {
@@ -45,6 +46,7 @@
 @media screen and (min-width: 700px) {
   .leftSection {
     width: 40%;
+    transition: all 0.3s ease;
   }
   .rightSection {
     width: 60%;
@@ -52,6 +54,15 @@
   .contentContainer {
     width: 60%;
     flex-direction: row;
+  }
+  .hidden {
+    display: none;
+    transition: all 0.3s ease;
+  }
+
+  .full-width {
+    width: 100%;
+    transition: all 0.3s ease;
   }
 }
 
@@ -62,6 +73,7 @@
   }
   .leftSection {
     height: 40%;
+    transition: all 0.3s ease;
   }
   .rightSection {
     height: 60%;
@@ -126,4 +138,10 @@
 
 a {
   text-decoration: none;
+}
+
+.viewMoreButton {
+  text-decoration: underline;
+  color: magenta;
+  cursor: pointer;
 }
