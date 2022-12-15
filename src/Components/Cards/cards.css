@@ -28,8 +28,8 @@
 @media screen and (max-width: 500px) {
   .cardContainer {
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 2rem;
-    row-gap: 2rem;
+    column-gap: 2rem !important;
+    row-gap: 2rem !important;
     width: 90%;
   }
   .result {
