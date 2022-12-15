@@ -29,6 +29,7 @@
   .cardContainer {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
+    row-gap: 2rem;
     width: 90%;
   }
   .result {
