@@ -37,7 +37,7 @@ export default function Show() {
         if (results.length === 0) {
           setError("No result found...");
           setIsPending(false);
-        }
+        } else setError(null);
         setData(results[getIndex(id)]);
         // console.log(results);
         setIsPending(false);

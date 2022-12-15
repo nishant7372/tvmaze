@@ -107,3 +107,23 @@
 .red {
   color: red !important;
 }
+
+.cast-link {
+  font-size: 1.8rem;
+  color: magenta;
+  text-decoration: none;
+  border: 1px solid magenta;
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+}
+
+.cast-link:hover {
+  color: white;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 0, 255);
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}

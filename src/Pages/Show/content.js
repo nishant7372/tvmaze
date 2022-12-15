@@ -1,18 +1,22 @@
-import { useState, useEffect } from "react";
+import { useEffect, useReducer } from "react";
+import { Link } from "react-router-dom";
 import "./content.css";
 
 export default function Content({ data }) {
-  const [name, setName] = useState("Title: N/A");
-  const [date, setDate] = useState("Premier: N/A");
-  const [summary, setSummary] = useState("Summary: N/A");
-  const [rating, setRating] = useState("Not Rated");
-  const [image, setImage] = useState(require("../../img/tvshow.png"));
-  const [status, setStatus] = useState("Status: N/A");
-  const [endDate, setEndDate] = useState("");
-  const [genre, setGenre] = useState("Genre: N/A");
-  const [language, setLanguage] = useState("Language: N/A");
-  const [countryName, setCountryName] = useState("");
-  const [runtime, setRuntime] = useState("Runtime: N/A");
+  const initialValue = {
+    name: "Title: N/A",
+    id: "",
+    date: "Premier: N/A",
+    summary: "Summary: N/A",
+    rating: "Not Rated",
+    image: require("../../img/tvshow.png"),
+    status: "Status: N/A",
+    endDate: "",
+    genre: "Genre: N/A",
+    language: "Language: N/A",
+    countryName: "",
+    runtime: "Runtime: N/A",
+  };
 
   const locale = navigator.language;
   const options = {
@@ -23,19 +27,17 @@ export default function Content({ data }) {
 
   function formatDate(date) {
     const d = new Date(date);
-    setDate(
-      "Premiered on " + new Intl.DateTimeFormat(locale, options).format(d)
-    );
+    return "Premiered on " + new Intl.DateTimeFormat(locale, options).format(d);
   }
 
   function formatEndDate(date) {
     const d = new Date(date);
-    setEndDate(" on " + new Intl.DateTimeFormat(locale, options).format(d));
+    return " on " + new Intl.DateTimeFormat(locale, options).format(d);
   }
 
   function formatStatus(status) {
-    if (status === "Running") setStatus("Ongoing");
-    if (status === "Ended") setStatus(`Ended`);
+    if (status === "Running") return "Ongoing";
+    if (status === "Ended") return `Ended`;
   }
 
   function formatGenre(genre) {
@@ -44,65 +46,103 @@ export default function Content({ data }) {
       str = str + genre[i] + ", ";
     }
     str = str + genre[genre.length - 1];
-    if (str !== "undefined") setGenre(str);
+    if (str !== "undefined") return str;
   }
 
   function formatSummary(summary) {
-    summary = summary.replaceAll("<p>", " ");
-    summary = summary.replaceAll("</p>", " ");
-    summary = summary.replaceAll("<i>", " ");
-    summary = summary.replaceAll("</i>", " ");
-    summary = summary.replaceAll(`"`, " ");
-    summary = summary.replaceAll("<b>", " ");
-    summary = summary.replaceAll("</b>", " ") + ".";
-    summary = summary.replaceAll("amp;", " ") + ".";
-    setSummary(summary.substring(0, summary.indexOf(".")) + ".");
+    return summary
+      .replaceAll("<p>", " ")
+      .replaceAll("</p>", " ")
+      .replaceAll("<i>", " ")
+      .replaceAll("</i>", " ")
+      .replaceAll(`"`, " ")
+      .replaceAll("<b>", " ")
+      .replaceAll("</b>", " ")
+      .replaceAll("amp;", " ");
   }
-  useEffect(() => {
-    if (data.show.name) setName(data.show.name);
-    if (data.show.premiered) formatDate(data.show.premiered);
-    if (data.show.summary) formatSummary(data.show.summary);
+
+  function reducer() {
+    let name = "Title: N/A";
+    let id = "";
+    let date = "Premier: N/A";
+    let summary = "Summary: N/A";
+    let rating = "Not Rated";
+    let image = require("../../img/tvshow.png");
+    let status = "Status: N/A";
+    let endDate = "";
+    let genre = "Genre: N/A";
+    let language = "Language: N/A";
+    let countryName = "";
+    let runtime = "Runtime: N/A";
+
+    if (data.show.name) name = data.show.name;
+    if (data.show.id) id = data.show.id;
+    if (data.show.premiered) date = formatDate(data.show.premiered);
+    if (data.show.summary) summary = formatSummary(data.show.summary);
     if (data.show.rating.average)
-      setRating("Rating: " + data.show.rating.average + "/10");
-    if (data.show.image) setImage(data.show.image.original);
-    if (data.show.ended) formatEndDate(data.show.ended);
-    if (data.show.status) formatStatus(data.show.status);
-    if (data.show.genres) formatGenre(data.show.genres);
-    if (data.show.language) setLanguage("Language: " + data.show.language);
-    if (data.show.runtime) setRuntime("Runtime: " + data.show.runtime + " min");
+      rating = "Rating: " + data.show.rating.average + "/10";
+    if (data.show.image) image = data.show.image.original;
+    if (data.show.ended) endDate = formatEndDate(data.show.ended);
+    if (data.show.status) status = formatStatus(data.show.status);
+    if (data.show.genres) genre = formatGenre(data.show.genres);
+    if (data.show.language) language = "Language: " + data.show.language;
+    if (data.show.runtime) runtime = "Runtime: " + data.show.runtime + " min";
     if (
       data.show.network &&
       data.show.network.country &&
       data.show.network.country.name
     )
-      setCountryName(" (" + data.show.network.country.name + ")");
-  }, []);
+      countryName = " (" + data.show.network.country.name + ")";
+
+    return {
+      name: name,
+      id: id,
+      date: date,
+      summary: summary,
+      rating: rating,
+      image: image,
+      status: status,
+      endDate: endDate,
+      genre: genre,
+      language: language,
+      runtime: runtime,
+      countryName: countryName,
+    };
+  }
+
+  const [show, dispatch] = useReducer(reducer, initialValue);
+
+  useEffect(() => {
+    dispatch();
+  }, [data]);
 
   return (
     <div className="contentContainer">
       <div className="leftSection">
-        <img src={image} alt={name} className="contentImg" />
+        <img src={show.image} alt={show.name} className="contentImg" />
       </div>
       <div className="rightSection">
         <div className="subright1">
-          <div className="name">{name}</div>
-          <div className="premier">{date}</div>
-          <div className="genre">{genre}</div>
-          <div className="summary">{summary}</div>
+          <div className="name">{show.name}</div>
+          <Link to={`/cast/${show.id}`}>
+            <div className="cast-link">View Cast</div>
+          </Link>
+          <div className="premier">{show.date}</div>
+          <div className="genre">{show.genre}</div>
+          <div className="summary">{show.summary}</div>
           <div className="language">
-            {language}
-            {countryName}
+            {show.language}
+            {show.countryName}
           </div>
-          <div className="runtime">{runtime}</div>
-
-          <div className={status === "Ongoing" ? `red status` : "status"}>
-            {status}
-            {endDate}
+          <div className="runtime">{show.runtime}</div>
+          <div className={show.status === "Ongoing" ? `red status` : "status"}>
+            {show.status}
+            {show.endDate}
           </div>
         </div>
         <div className="subright2">
           <div className="border-top"></div>
-          <div className="rating">{rating}</div>
+          <div className="rating">{show.rating}</div>
         </div>
       </div>
     </div>
