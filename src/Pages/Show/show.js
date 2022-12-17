@@ -22,10 +22,10 @@ export default function Show() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   function getQuery(id) {
-    return id.substring(0, id.indexOf("@"));
+    return id.substring(0, id.lastIndexOf("@"));
   }
   function getIndex(id) {
-    return parseInt(id.substring(id.indexOf("@") + 1, id.length));
+    return parseInt(id.substring(id.lastIndexOf("@") + 1, id.length));
   }
 
   useEffect(() => {

@@ -11,14 +11,14 @@ export default function Searchbar() {
     else navigate(`/search?q=${term}`);
   }, [term]);
 
-  const checkSearchTerm = (term) => {
-    if (
-      term.charAt(term.length - 1) == "@" ||
-      term.charAt(term.length - 1) == "#"
-    )
-      ref.current.value = term.substring(0, term.length - 1);
-    else setTerm(term);
-  };
+  // const checkSearchTerm = (term) => {
+  //   if (
+  //     term.charAt(term.length - 1) == "@" ||
+  //     term.charAt(term.length - 1) == "#"
+  //   )
+  //     ref.current.value = term.substring(0, term.length - 1);
+  //   else setTerm(term);
+  // };
   return (
     <form
       className="searchBar"
@@ -33,7 +33,7 @@ export default function Searchbar() {
         ref={ref}
         placeholder="Search..."
         onChange={(e) => {
-          checkSearchTerm(e.target.value);
+          setTerm(e.target.value);
         }}
         required
       />
