@@ -138,7 +138,9 @@ export default function Content({ data }) {
 
   return (
     <div className="contentContainer">
-      <div className={viewMore ? `leftSection hidden` : `leftSection`}>
+      <div
+        className={viewMore ? `leftSection hidden zero-width` : `leftSection`}
+      >
         <img src={show.image} alt={show.name} className="contentImg" />
       </div>
       <div className={viewMore ? `rightSection full-width` : `rightSection`}>

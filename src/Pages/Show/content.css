@@ -56,7 +56,11 @@
     flex-direction: row;
   }
   .hidden {
-    display: none;
+    visibility: collapse;
+    transition: all 0.3s ease;
+  }
+  .zero-width {
+    width: 0%;
     transition: all 0.3s ease;
   }
 
