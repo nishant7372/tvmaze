@@ -131,12 +131,15 @@
   border: 1px solid magenta;
   border-radius: 4px;
   padding: 0.2rem 0.4rem;
+  background: linear-gradient(to right, magenta 50%, rgba(0, 0, 0, 0) 50%);
+  background-size: 200% 100%;
+  background-position: right top;
+  transition: all 0.4s ease;
 }
 
 .cast-link:hover {
   color: white;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 0, 255);
+  background-position: left top;
   text-decoration: none;
 }
 
@@ -148,4 +151,9 @@ a {
   text-decoration: underline;
   color: magenta;
   cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.viewMoreButton:hover {
+  color: blue;
 }
