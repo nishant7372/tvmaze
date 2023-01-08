@@ -71,7 +71,13 @@ export default function ShowCard({ idx, data, query }) {
       to={`/show/${query}@${idx}`}
     >
       <div className="showCard">
-        <div className="leftSection-card">
+        <div
+          className={`${
+            query.length % 2
+              ? `leftSection-card fade-even`
+              : `leftSection-card fade-odd`
+          }`}
+        >
           <img src={show.image} alt={show.name} className="contentImg-card" />
         </div>
         <div className="rightSection-card">
