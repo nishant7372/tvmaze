@@ -61,6 +61,7 @@
 .leftSection img {
   width: 4rem;
   height: 4rem;
+  animation: Fade 0.4s ease;
   /* -webkit-filter: invert(1);
   filter: invert(1); */
 }
@@ -76,4 +77,15 @@
 
 .name {
   padding-top: 0.4rem;
+}
+
+@keyframes Fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

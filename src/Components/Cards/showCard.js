@@ -44,14 +44,12 @@ export default function ShowCard({ idx, data, query }) {
     let summary = "Summary: N/A";
     let rating = "Not Rated";
     let image = require("../../img/tvshow.png");
-
     if (data.show.name) name = data.show.name;
     if (data.show.premiered) date = formatDate(data.show.premiered);
     if (data.show.summary) summary = formatSummary(data.show.summary);
     if (data.show.rating.average)
       rating = "Rating: " + data.show.rating.average + "/10";
     if (data.show.image) image = data.show.image.medium;
-
     return {
       name: name,
       date: date,
@@ -68,7 +66,10 @@ export default function ShowCard({ idx, data, query }) {
   }, [data]);
 
   return (
-    <Link className="link" to={`/show/${query}@${idx}`}>
+    <Link
+      className={`${query.length % 2 ? `link moveup-even` : `link moveup-odd`}`}
+      to={`/show/${query}@${idx}`}
+    >
       <div className="showCard">
         <div className="leftSection-card">
           <img src={show.image} alt={show.name} className="contentImg-card" />

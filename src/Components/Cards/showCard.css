@@ -10,6 +10,15 @@
   background-color: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 4px;
+  backface-visibility: hidden;
+}
+
+.moveup-odd {
+  animation: MoveUp-1 0.5s ease-out;
+}
+
+.moveup-even {
+  animation: MoveUp-2 0.5s ease-out;
 }
 
 @media screen and (max-width: 550px) {
@@ -117,4 +126,26 @@
 
 .link {
   text-decoration: none;
+}
+
+@keyframes MoveUp-1 {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes MoveUp-2 {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }

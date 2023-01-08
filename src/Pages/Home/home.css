@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  animation: Fade-Enlarge 0.6s ease-out;
 }
 
 @media screen and (max-width: 500px) {
@@ -32,4 +33,15 @@
 
 .fImage {
   width: 40%;
+}
+
+@keyframes Fade-Enlarge {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

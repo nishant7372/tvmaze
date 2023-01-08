@@ -8,6 +8,7 @@
   border-radius: 4px;
   max-width: 80rem;
   min-width: 25rem;
+  animation: Fade-Enlarge 0.7s ease-out;
 }
 
 .rightSection {
@@ -156,4 +157,15 @@ a {
 
 .viewMoreButton:hover {
   color: blue;
+}
+
+@keyframes Fade-Enlarge {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
