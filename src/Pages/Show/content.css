@@ -8,7 +8,7 @@
   border-radius: 4px;
   max-width: 80rem;
   min-width: 25rem;
-  animation: Fade-Enlarge 0.7s ease-out;
+  animation: Fade-Enlarge 0.5s ease-out;
 }
 
 .rightSection {
@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.6s ease;
 }
 
 .subright1 {
@@ -58,11 +58,11 @@
   }
   .hidden {
     visibility: collapse;
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
   }
   .zero-width {
     width: 0%;
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
   }
 
   .full-width {
