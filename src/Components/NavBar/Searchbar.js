@@ -6,19 +6,13 @@ export default function Searchbar() {
   const [term, setTerm] = useState("");
   const ref = useRef(null);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (term === "") navigate("/");
     else navigate(`/search?q=${term}`);
+    // eslint-disable-next-line
   }, [term]);
 
-  // const checkSearchTerm = (term) => {
-  //   if (
-  //     term.charAt(term.length - 1) == "@" ||
-  //     term.charAt(term.length - 1) == "#"
-  //   )
-  //     ref.current.value = term.substring(0, term.length - 1);
-  //   else setTerm(term);
-  // };
   return (
     <form
       className="searchBar"

@@ -57,7 +57,6 @@ export default function Cards() {
           setError(null);
         }
         setData(results);
-        // console.log(results);
         setIsPending(false);
       })
       .catch((err) => {

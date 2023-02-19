@@ -21,13 +21,13 @@
   animation: MoveUp-2 0.4s ease-out;
 }
 
-.fade-odd {
+/* .fade-odd {
   animation: Fade-img-1 1s ease-out 0.4s;
 }
 
 .fade-even {
   animation: Fade-img-2 1s ease-out 0.4s;
-}
+} */
 
 @media screen and (max-width: 550px) {
   .rightSection-card {
@@ -130,6 +130,7 @@
 .leftSection-card {
   width: 100%;
   height: 60%;
+  /* min-height: 32rem; */
 }
 
 .link {
@@ -158,7 +159,7 @@
   }
 }
 
-@keyframes Fade-img-1 {
+/* @keyframes Fade-img-1 {
   0% {
     opacity: 0;
   }
@@ -174,4 +175,4 @@
   100% {
     opacity: 1;
   }
-}
+} */

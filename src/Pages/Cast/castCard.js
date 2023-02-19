@@ -1,5 +1,6 @@
 import "./castCard.css";
 import { useEffect, useReducer } from "react";
+
 export default function CastCard({ data }) {
   const initialValue = {
     characterName: "Character Name: N/A",
@@ -33,14 +34,14 @@ export default function CastCard({ data }) {
     dispatch();
   }, [data]);
 
-  // console.log(data);
   return (
     <div className="castCard">
       <div className="upperSection-castCard">
         <img
           className={cast.imagePresent ? `castImage` : `castImage invert`}
           src={cast.image}
-        ></img>
+          alt="actor/actress"
+        />
       </div>
       <div className="lowerSection-castCard">
         <div className="lowerSection-castCard-cName">{cast.characterName}</div>

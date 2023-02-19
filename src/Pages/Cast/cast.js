@@ -10,7 +10,6 @@ export default function Cast() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
-  // console.log(id);
   useEffect(() => {
     setIsPending(true);
 
@@ -22,7 +21,6 @@ export default function Cast() {
           setIsPending(false);
         } else setError(null);
         setData(results._embedded.cast);
-        // console.log(results);
         setIsPending(false);
       })
       .catch((err) => {

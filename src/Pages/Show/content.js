@@ -155,14 +155,14 @@ export default function Content({ data }) {
             {!viewMore && show.summary + " "}
             {viewMore && show.fullSummary + " "}
             {!viewMore && (
-              <a className="viewMoreButton" onClick={handleviewMore}>
+              <div className="viewMoreButton" onClick={handleviewMore}>
                 view more
-              </a>
+              </div>
             )}
             {viewMore && (
-              <a className="viewMoreButton" onClick={handleviewLess}>
+              <div className="viewMoreButton" onClick={handleviewLess}>
                 view less
-              </a>
+              </div>
             )}
           </div>
           <div className="language">
