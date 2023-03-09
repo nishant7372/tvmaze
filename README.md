@@ -4,8 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 <p display="flex">
 <img src="https://user-images.githubusercontent.com/91368799/207660223-1e0bf6bb-60c4-44a8-8f0f-a0ad8bd9a1de.png" width="48%"/>
-<img src="https://user-images.githubusercontent.com/91368799/207942316-79ddf572-dd9c-46fc-a611-c4b3f8ddc6cc.png" width="48%"/> 
-<img src="https://user-images.githubusercontent.com/91368799/207659701-14ef7972-2335-478a-85ca-ea99a6063923.png" width="48%"/>
+<img src="https://user-images.githubusercontent.com/91368799/224120634-f9abfb3f-050f-49fa-9bc0-0941362670e9.png" width="48%"/> 
+<img src="https://user-images.githubusercontent.com/91368799/224120980-ca6d9107-2898-4cdd-90db-6c154c0d0770.png" width="48%"/>
 <img src="https://user-images.githubusercontent.com/91368799/207911101-340a661b-2b2f-435b-af1d-d5f30ec78c5e.png" width="48%"/>  
 
 </p>
