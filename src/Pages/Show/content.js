@@ -1,26 +1,27 @@
 import { useEffect, useReducer, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./content.css";
 
-export default function Content({ data }) {
+export default function Content({ data, query }) {
   const [viewMore, setViewMore] = useState(false);
 
-  function handleviewMore() {
+  const handleviewMore = () => {
     setViewMore(true);
-  }
+  };
 
-  function handleviewLess() {
+  const handleviewLess = () => {
     setViewMore(false);
-  }
+  };
 
   const initialValue = {
     name: "Title: N/A",
-    id: "",
+    id: null,
     date: "Premier: N/A",
     summary: "Summary: N/A",
     fullSummary: "Summary: N/A",
     rating: "Not Rated",
-    image: require("../../img/tvshow.png"),
+    image: `${process.env.PUBLIC_URL}/img/tvshow.png`,
     status: "Status: N/A",
     endDate: "",
     genre: "Genre: N/A",
@@ -74,59 +75,54 @@ export default function Content({ data }) {
   }
 
   function reducer() {
-    let name = "Title: N/A";
-    let id = "";
-    let date = "Premier: N/A";
-    let summary = "Summary: N/A";
-    let fullSummary = "Summary: N/A";
-    let rating = "Not Rated";
-    let image = require("../../img/tvshow.png");
-    let status = "Status: N/A";
-    let endDate = "";
-    let genre = "Genre: N/A";
-    let language = "Language: N/A";
-    let countryName = "";
-    let runtime = "Runtime: N/A";
+    let name = initialValue.name;
+    let id = initialValue.id;
+    let date = initialValue.date;
+    let summary = initialValue.summary;
+    let fullSummary = initialValue.fullSummary;
+    let rating = initialValue.rating;
+    let image = initialValue.image;
+    let status = initialValue.status;
+    let endDate = initialValue.endDate;
+    let genre = initialValue.genre;
+    let language = initialValue.language;
+    let countryName = initialValue.countryName;
+    let runtime = initialValue.runtime;
 
-    if (data.show.name) name = data.show.name;
-    if (data.show.id) id = data.show.id;
-    if (data.show.premiered) date = formatDate(data.show.premiered);
-    if (data.show.summary)
+    if (data.name) name = data.name;
+    if (data.id) id = data.id;
+    if (data.premiered) date = formatDate(data.premiered);
+    if (data.summary)
       summary =
-        formatSummary(data.show.summary).substring(
+        formatSummary(data.summary).substring(
           0,
-          Math.min(200, formatSummary(data.show.summary).length)
+          Math.min(200, formatSummary(data.summary).length)
         ) + "...";
-    if (data.show.summary) fullSummary = formatSummary(data.show.summary);
-    if (data.show.rating.average)
-      rating = "Rating: " + data.show.rating.average + "/10";
-    if (data.show.image) image = data.show.image.original;
-    if (data.show.ended) endDate = formatEndDate(data.show.ended);
-    if (data.show.status) status = formatStatus(data.show.status);
-    if (data.show.genres) genre = formatGenre(data.show.genres);
-    if (data.show.language) language = "Language: " + data.show.language;
-    if (data.show.runtime) runtime = "Runtime: " + data.show.runtime + " min";
-    if (
-      data.show.network &&
-      data.show.network.country &&
-      data.show.network.country.name
-    )
-      countryName = " (" + data.show.network.country.name + ")";
+    if (data.summary) fullSummary = formatSummary(data.summary);
+    if (data.rating.average) rating = "Rating: " + data.rating.average + "/10";
+    if (data.image) image = data.image.original;
+    if (data.ended) endDate = formatEndDate(data.ended);
+    if (data.status) status = formatStatus(data.status);
+    if (data.genres) genre = formatGenre(data.genres);
+    if (data.language) language = "Language: " + data.language;
+    if (data.runtime) runtime = "Runtime: " + data.runtime + " min";
+    if (data.network && data.network.country && data.network.country.name)
+      countryName = " (" + data.network.country.name + ")";
 
     return {
-      name: name,
-      id: id,
-      date: date,
-      summary: summary,
-      rating: rating,
-      image: image,
-      status: status,
-      endDate: endDate,
-      genre: genre,
-      language: language,
-      runtime: runtime,
-      countryName: countryName,
-      fullSummary: fullSummary,
+      name,
+      id,
+      date,
+      summary,
+      rating,
+      image,
+      status,
+      endDate,
+      genre,
+      language,
+      runtime,
+      countryName,
+      fullSummary,
     };
   }
 
@@ -146,7 +142,7 @@ export default function Content({ data }) {
       <div className={viewMore ? `rightSection full-width` : `rightSection`}>
         <div className="subright1">
           <div className="name">{show.name}</div>
-          <Link to={`/cast/${show.id}`}>
+          <Link to={`/${query}/${show.id}/cast`}>
             <div className="cast-link">View Cast</div>
           </Link>
           <div className="premier">{show.date}</div>

@@ -6,7 +6,7 @@ export default function Home() {
       <div className="heading">
         <img
           className="fImage"
-          src={require("../../img/logo.png")}
+          src={process.env.PUBLIC_URL + "/img/logo.png"}
           alt="home-logo"
         />
         Search for your favourite Tv Shows

@@ -6,6 +6,7 @@ import Cards from "./Components/Cards/cards";
 import Show from "./Pages/Show/show";
 import NavBar from "./Components/NavBar/NavBar";
 import Cast from "./Pages/Cast/cast";
+import NotFound from "./Pages/Error/notFound";
 
 function App() {
   return (
@@ -15,8 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/shows/:query" element={<Cards />}></Route>
-          <Route path="/show/:id" element={<Show />}></Route>
-          <Route path="/cast/:id" element={<Cast />}></Route>
+          <Route path="/show/:query/:id" element={<Show />}></Route>
+          <Route path="/:query/:id/cast" element={<Cast />}></Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>
     </div>

@@ -1,49 +1,26 @@
+import "./show.css";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+import { useGetShow } from "../../hooks/useGetShow";
+
 import Content from "./content";
-import "./show.css";
 import Spinner from "../../Components/Cards/Spinner";
 
 export default function Show() {
-  // const alertUser = (e) => {
-  //   e.preventDefault();
-  //   e.returnValue = "";
-  // };
-
-  // useEffect(() => {
-  //   window.addEventListener("beforeunload", alertUser);
-  //   return () => {
-  //     window.removeEventListener("beforeunload", alertUser);
-  //   };
-  // }, []);
-
-  const { id } = useParams();
-  const [isPending, setIsPending] = useState(false);
+  const { query, id } = useParams();
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
-  function getQuery(id) {
-    return id.substring(0, id.lastIndexOf("@"));
-  }
-  function getIndex(id) {
-    return parseInt(id.substring(id.lastIndexOf("@") + 1, id.length));
-  }
+
+  const { getShow, isPending } = useGetShow();
 
   useEffect(() => {
-    setIsPending(true);
-
-    fetch(`https://api.tvmaze.com/search/shows?q=${getQuery(id)}`)
-      .then((res) => res.json())
-      .then((results) => {
-        if (results.length === 0) {
-          setError("No result found...");
-        } else setError(null);
-        setData(results[getIndex(id)]);
-        setIsPending(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setIsPending(false);
-      });
+    const fetch = async (id) => {
+      const res = await getShow(id);
+      if (res.ok) setData(res.data);
+      else if (res.error) setError(res.error);
+    };
+    fetch(id);
   }, [id]);
 
   return (
@@ -54,7 +31,7 @@ export default function Show() {
           <Spinner />
         </div>
       )}
-      {data && <Content data={data} />}
+      {data && <Content data={data} query={query} />}
     </div>
   );
 }

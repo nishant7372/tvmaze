@@ -1,18 +1,18 @@
+import "./cards.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import ShowCard from "./showCard";
-import "./cards.css";
 import Spinner from "./Spinner";
 
 import { useGetShows } from "../../hooks/useGetShows";
 
 export default function Cards() {
-  const { getShows, isPending } = useGetShows();
-
   const { query } = useParams();
-
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+
+  const { getShows, isPending } = useGetShows();
 
   useEffect(() => {
     const fetch = async () => {
@@ -39,7 +39,7 @@ export default function Cards() {
       {data && (
         <ul className="cardContainer">
           {data.map((show, index) => (
-            <ShowCard key={index} idx={index} data={show} query={query} />
+            <ShowCard key={index} data={show} query={query} />
           ))}
         </ul>
       )}

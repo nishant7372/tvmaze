@@ -6,7 +6,7 @@ export default function NavBar() {
     <div className={`${styles["nav-container"]} ${styles.sticky}`}>
       <div className={styles["navbar"]}>
         <div className={styles["nav-left"]}>
-          <img src={require("../../img/logo.png")} alt="logo" />
+          <img src={process.env.PUBLIC_URL + "/img/logo.png"} alt="logo" />
           <div className={styles["name"]}>TvMaze</div>
         </div>
         <div className={styles["nav-right"]}>

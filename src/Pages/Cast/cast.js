@@ -1,32 +1,25 @@
 import "./cast.css";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+import { useGetShowCast } from "../../hooks/useGetShowCast";
+
 import Spinner from "../../Components/Cards/Spinner";
 import CastCard from "./castCard";
 
 export default function Cast() {
   const { id } = useParams();
-  const [isPending, setIsPending] = useState(false);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  const { getShowCast, isPending } = useGetShowCast();
 
   useEffect(() => {
-    setIsPending(true);
-
-    fetch(`https://api.tvmaze.com/shows/${id}?embed=cast`)
-      .then((res) => res.json())
-      .then((results) => {
-        if (results.length === 0) {
-          setError("No result found...");
-          setIsPending(false);
-        } else setError(null);
-        setData(results._embedded.cast);
-        setIsPending(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setIsPending(false);
-      });
+    const fetch = async (id) => {
+      const res = await getShowCast(id);
+      if (res.ok) setData(res.data._embedded.cast);
+      else if (res.error) setError(res.error);
+    };
+    fetch(id);
   }, [id]);
 
   return (
