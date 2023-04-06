@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./Pages/Home/home";
 import Cards from "./Components/Cards/cards";
@@ -10,15 +10,15 @@ import Cast from "./Pages/Cast/cast";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/search" element={<Cards />}></Route>
+          <Route path="/shows/:query" element={<Cards />}></Route>
           <Route path="/show/:id" element={<Show />}></Route>
           <Route path="/cast/:id" element={<Cast />}></Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
