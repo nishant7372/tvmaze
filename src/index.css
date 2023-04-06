@@ -11,8 +11,7 @@
    1rem = 9px  -> 56.25%
    1rem = 8px  -> 50%
    1rem = 7.5px -> 46.875%
-   1rem = 7px -> 43.75%
-   1rem = 5px -> 31.25%     */
+   1rem = 6px -> 37.5%     */
 
 html {
   font-size: 56.25%; /* 1rem -> 9px*/
@@ -30,21 +29,15 @@ body {
   }
 }
 
-@media screen and (min-width: 400px) and (max-width: 600px) {
+@media screen and (min-width: 300px) and (max-width: 600px) {
   html {
     font-size: 46.875%; /* 1 rem = 7.5px */
   }
 }
 
-@media screen and (min-width: 300px) and (max-width: 400px) {
-  html {
-    font-size: 43.75%; /* 1 rem = 7px */
-  }
-}
-
 @media screen and (max-width: 300px) {
   html {
-    font-size: 31.25%; /* 1 rem = 5px */
+    font-size: 37.5%; /* 1 rem = 6px */
   }
 }
 
