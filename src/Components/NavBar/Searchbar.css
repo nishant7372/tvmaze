@@ -8,7 +8,7 @@
   border-radius: 4px;
   align-self: center;
   border: none;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem 0.5rem;
   width: 7rem;
   font-size: 1.5rem;
   text-align: left;
@@ -20,11 +20,12 @@
 }
 
 .searchBar input:focus {
-  width: min(200px, 18vw);
+  width: 14rem;
   outline: none;
+  border-color: rgba(255, 255, 255, 0.7);
 }
 
 .searchBar img {
-  width: 4rem;
-  height: 4rem;
+  width: 2.8rem;
+  height: 2.8rem;
 }

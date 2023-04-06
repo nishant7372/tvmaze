@@ -1,34 +1,30 @@
-import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Searchbar.css";
 
 export default function Searchbar() {
-  const [term, setTerm] = useState("");
-  const ref = useRef(null);
+  const location = useLocation();
+  const parts = location.pathname.split("/");
+  const path = parts[parts.length - 1];
+
+  const [term, setTerm] = useState(path);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (term === "") navigate("/");
-    else navigate(`/search?q=${term}`);
-    // eslint-disable-next-line
+    else navigate(`/shows/${term}`);
   }, [term]);
 
   return (
-    <form
-      className="searchBar"
-      onSubmit={(e) => {
-        e.preventDefault();
-        ref.current.value = "";
-      }}
-    >
+    <form className="searchBar">
       <img src={require("../../img/search.png")} alt="search" />
       <input
         type="text"
-        ref={ref}
         placeholder="Search..."
         onChange={(e) => {
           setTerm(e.target.value);
         }}
+        value={term}
         required
       />
     </form>
