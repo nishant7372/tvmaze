@@ -1,27 +1,24 @@
-import "./cards.css";
+import "./../../Components/Cards/cards.css";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
-import ShowCard from "./showCard";
-import Spinner from "./Spinner";
+import ShowCard from "../../Components/Cards/showCard";
+import Spinner from "../../Components/Cards/Spinner";
 
-import { useGetShows } from "../../hooks/useGetShows";
+import { useGetStarred } from "../../hooks/useGetStarred";
 
-export default function Cards() {
-  const { query } = useParams();
+export default function FavouriteShows() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
-  const { getShows, isPending } = useGetShows();
-
+  const { getStarred, isPending } = useGetStarred();
   useEffect(() => {
     const fetch = async () => {
-      const res = await getShows(query);
+      const res = await getStarred();
       if (res.ok) setData(res.data);
       else if (res.error) setError(res.error);
     };
     fetch();
-  }, [query]);
+  }, []);
 
   return (
     <div className="mainContainer">
@@ -31,15 +28,13 @@ export default function Cards() {
             <Spinner />
           </div>
         )}
-        {!error && data && (
-          <div className="result">Results including "{query}"</div>
-        )}
+        {!error && data && <div className="result">Favourite Shows</div>}
       </div>
       {error && <div className="error">{error}</div>}
       {data && (
         <ul className="cardContainer">
           {data.map((show, index) => (
-            <ShowCard key={index} data={show.show} query={query} />
+            <ShowCard key={index} data={show.data} query={"favourites"} />
           ))}
         </ul>
       )}

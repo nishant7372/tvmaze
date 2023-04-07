@@ -1,6 +1,6 @@
 import styles from "./NavBar.module.css";
 import Searchbar from "./Searchbar";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, NavLink } from "react-router-dom";
 
 export default function NavBar() {
   const location = useLocation();
@@ -17,6 +17,16 @@ export default function NavBar() {
           <div className={styles["nav-left"]}>
             <img src={process.env.PUBLIC_URL + "/img/logo.png"} alt="logo" />
             <div className={styles["name"]}>TvMaze</div>
+          </div>
+          <div className={styles["nav-middle"]}>
+            <NavLink to="/">
+              <i class="fa-solid fa-house"></i> &nbsp;
+              <span className={styles["fav-name"]}>Home</span>
+            </NavLink>
+            <NavLink to="/favourites">
+              <i className="fa-solid fa-heart"></i> &nbsp;
+              <span className={styles["fav-name"]}>Favourites</span>
+            </NavLink>
           </div>
           {(parts[1] === "" || parts[1] === "shows") && (
             <div className={styles["nav-right"]}>

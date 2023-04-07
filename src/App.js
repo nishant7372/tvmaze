@@ -7,6 +7,7 @@ import Show from "./Pages/Show/show";
 import NavBar from "./Components/NavBar/NavBar";
 import Cast from "./Pages/Cast/cast";
 import NotFound from "./Pages/Error/notFound";
+import FavouriteShows from "./Pages/Favourite/favourite";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/shows/:query" element={<Cards />}></Route>
           <Route path="/show/:query/:id" element={<Show />}></Route>
           <Route path="/:query/:id/cast" element={<Cast />}></Route>
+          <Route path="/favourites" element={<FavouriteShows />}></Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

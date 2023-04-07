@@ -103,6 +103,7 @@
 
 .link {
   text-decoration: none;
+  position: relative;
 }
 
 @keyframes MoveUp-1 {
@@ -125,4 +126,24 @@
     opacity: 1;
     transform: translate(0);
   }
+}
+
+.fav-button {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 2rem;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background-color: silver;
+  display: flex;
+  align-items: center;
+  padding: 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checked {
+  color: rgb(255, 255, 66);
+  background-color: rgb(28, 22, 22);
+  border: 2px solid yellow;
 }

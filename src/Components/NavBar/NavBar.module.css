@@ -20,19 +20,19 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 100%;
   margin: auto;
   max-width: 1400px;
 }
 
 .nav-left {
+  width: calc(33.334% - 4rem);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
+  padding-left: 4rem;
   gap: 1.5rem;
   font-size: 2.5rem;
-  padding-left: 4rem;
   color: white;
   font-weight: 600;
 }
@@ -47,29 +47,34 @@
   padding-top: 0.4rem;
 }
 
-.nav-right {
-  padding-right: 4rem;
+.nav-middle {
+  width: 33.333%;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  font-size: 1.7rem;
+  color: rgba(255, 255, 255, 0.65);
   gap: 2rem;
 }
 
-@media screen and (max-width: 400px) {
-  .name {
-    display: none;
-  }
+.nav-right {
+  width: calc(33.334% - 4rem);
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-right: 4rem;
+  gap: 2rem;
 }
 
-@keyframes Fade {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+.navbar2 {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  max-width: 1400px;
+  height: 50px;
 }
 
 .backButton {
@@ -92,20 +97,30 @@
   font-size: 2rem;
 }
 
-.navbar2 {
-  padding-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: auto;
-  max-width: 1400px;
-  height: 50px;
-}
-
 .github {
   color: white;
   font-size: 3.5rem;
   display: flex;
   align-items: center;
   padding-right: 5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .name {
+    display: none;
+  }
+  .fav-name {
+    display: none;
+  }
+}
+
+@keyframes Fade {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

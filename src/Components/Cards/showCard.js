@@ -1,9 +1,11 @@
 import "./showCard.css";
 
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function ShowCard({ data, query }) {
+  const [checked, setChecked] = useState(false);
+
   const initialValue = {
     id: null,
     name: "Title: N/A",
@@ -48,13 +50,16 @@ export default function ShowCard({ data, query }) {
     let image = initialValue.image;
     let id = initialValue.id;
 
-    if (data.show.id) id = data.show.id;
-    if (data.show.name) name = data.show.name;
-    if (data.show.premiered) date = formatDate(data.show.premiered);
-    if (data.show.summary) summary = formatSummary(data.show.summary);
-    if (data.show.rating.average)
-      rating = "Rating: " + data.show.rating.average + "/10";
-    if (data.show.image) image = data.show.image.medium;
+    if (data.id) id = data.id;
+    if (data.name) name = data.name;
+    if (data.premiered) date = formatDate(data.premiered);
+    if (data.summary) summary = formatSummary(data.summary);
+    if (data.rating.average) rating = "Rating: " + data.rating.average + "/10";
+    if (data.image) image = data.image.medium;
+    setChecked(
+      JSON.parse(localStorage.getItem("items")) &&
+        localStorage.getItem("items").includes(id)
+    );
     return {
       id,
       name,
@@ -71,12 +76,23 @@ export default function ShowCard({ data, query }) {
     dispatch();
   }, [data]);
 
+  const addToFav = (id) => {
+    let items = JSON.parse(localStorage.getItem("items")) || [];
+    if (items.includes(id)) {
+      items = items.filter((item) => item !== id);
+      setChecked(false);
+    } else {
+      items.push(id);
+      setChecked(true);
+    }
+    localStorage.setItem("items", JSON.stringify(items));
+  };
+
   return (
-    <Link
+    <div
       className={`${query.length % 2 ? `link moveup-even` : `link moveup-odd`}`}
-      to={`/show/${query}/${show.id}`}
     >
-      <div className="showCard">
+      <Link to={`/show/${query}/${show.id}`} className="link showCard">
         <div className={[`leftSection-card`]}>
           <img src={show.image} alt={show.name} className="contentImg-card" />
         </div>
@@ -91,7 +107,13 @@ export default function ShowCard({ data, query }) {
             <div className="rating">{show.rating}</div>
           </div>
         </div>
+      </Link>
+      <div
+        className={`fav-button ${checked ? "checked" : ""}`}
+        onClick={() => addToFav(show.id)}
+      >
+        <i className="fa-solid fa-heart"></i>
       </div>
-    </Link>
+    </div>
   );
 }

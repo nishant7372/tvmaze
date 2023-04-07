@@ -29,3 +29,15 @@
   width: 2.8rem;
   height: 2.8rem;
 }
+
+@media screen and (max-width: 500px) {
+  .searchBar input:focus {
+    width: 9rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .searchBar input:focus {
+    width: 7rem;
+  }
+}
