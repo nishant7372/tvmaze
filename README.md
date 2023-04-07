@@ -3,11 +3,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 <p display="flex">
-<img src="https://user-images.githubusercontent.com/91368799/207660223-1e0bf6bb-60c4-44a8-8f0f-a0ad8bd9a1de.png" width="48%"/>
-<img src="https://user-images.githubusercontent.com/91368799/224120634-f9abfb3f-050f-49fa-9bc0-0941362670e9.png" width="48%"/> 
-<img src="https://user-images.githubusercontent.com/91368799/224120980-ca6d9107-2898-4cdd-90db-6c154c0d0770.png" width="48%"/>
-<img src="https://user-images.githubusercontent.com/91368799/207911101-340a661b-2b2f-435b-af1d-d5f30ec78c5e.png" width="48%"/>  
-
+<img src="https://user-images.githubusercontent.com/91368799/230674458-b66b7113-6f90-4a21-a282-b0e4f2746d73.png" width="48%"/>
+<img src="https://user-images.githubusercontent.com/91368799/230674303-fb4a05dd-fdf1-40c8-ad7c-1e372b4e1882.png" width="48%"/> 
+<img src="https://user-images.githubusercontent.com/91368799/230674538-14dd2f91-4fbd-436b-8bc6-bfe0d1bba890.png" width="48%"/>
+<img src="https://user-images.githubusercontent.com/91368799/230674616-4e0e33cb-33f7-4aeb-8e5d-64721388390d.png" width="48%"/> 
+<img src="https://user-images.githubusercontent.com/91368799/230674771-3eeafdc0-78cb-425d-8a84-db796f2755a7.png" width="48%"/> 
+<img src="https://user-images.githubusercontent.com/91368799/230674882-edec626c-dcd5-4134-8bc9-39c448e0ac73.png" width="48%"/> 
 </p>
 
 ## Available Scripts
