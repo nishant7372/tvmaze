@@ -44,10 +44,13 @@
   bottom: 1rem;
 }
 
+.leftSection {
+  transition: all 0.3s ease;
+}
+
 @media screen and (min-width: 700px) {
   .leftSection {
     width: 40%;
-    transition: all 0.3s ease;
   }
   .rightSection {
     width: 60%;
@@ -78,13 +81,17 @@
   }
   .leftSection {
     height: 40%;
-    transition: all 0.3s ease;
   }
   .rightSection {
     height: 60%;
   }
 }
 
+@media screen and (max-width: 500px) {
+  .contentContainer {
+    width: 90%;
+  }
+}
 .name {
   color: white;
   font-size: 2.2rem;

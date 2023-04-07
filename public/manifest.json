@@ -4,17 +4,17 @@
   "icons": [
     {
       "src": "logo.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "64x64",
       "type": "image/x-icon"
     },
     {
       "src": "img/logo.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "600x600"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#333333"
+  "background_color": "#222222"
 }

@@ -42,6 +42,10 @@ export default function ShowCard({ data, query }) {
     );
   }
 
+  function formatName(name) {
+    return name.length > 30 ? name.substring(0, 30) + "..." : name;
+  }
+
   function reducer() {
     let name = initialValue.name;
     let date = initialValue.date;
@@ -51,7 +55,7 @@ export default function ShowCard({ data, query }) {
     let id = initialValue.id;
 
     if (data.id) id = data.id;
-    if (data.name) name = data.name;
+    if (data.name) name = formatName(data.name);
     if (data.premiered) date = formatDate(data.premiered);
     if (data.summary) summary = formatSummary(data.summary);
     if (data.rating.average) rating = "Rating: " + data.rating.average + "/10";
