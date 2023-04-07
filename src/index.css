@@ -91,3 +91,8 @@ div::-webkit-scrollbar-thumb {
   outline: 1px solid slategrey;
   border-radius: 6px;
 }
+
+a {
+  text-decoration: none;
+  color: unset;
+}

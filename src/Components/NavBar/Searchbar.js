@@ -1,6 +1,6 @@
+import styles from "./Searchbar.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import "./Searchbar.css";
 
 export default function Searchbar() {
   const location = useLocation();
@@ -22,7 +22,7 @@ export default function Searchbar() {
   }, [term]);
 
   return (
-    <form className="searchBar">
+    <form className={styles["searchBar"]}>
       <img src={process.env.PUBLIC_URL + "/img/search.png"} alt="search" />
       <input
         type="text"
@@ -30,6 +30,7 @@ export default function Searchbar() {
         onChange={(e) => {
           setTerm(e.target.value);
         }}
+        maxLength={50}
         value={term}
         required
       />
