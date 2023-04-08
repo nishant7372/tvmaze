@@ -97,6 +97,10 @@ a {
   color: unset;
 }
 
+a:hover {
+  color: white;
+}
+
 a.active {
   color: white;
 }

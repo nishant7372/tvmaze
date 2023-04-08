@@ -1,6 +1,6 @@
 .nav-container {
   box-shadow: 0 2px 8px 4px rgba(0, 0, 0, 0.6);
-  background-color: rgba(25, 25, 25, 255);
+  background-color: rgba(20, 20, 20, 0.95);
   height: 60px;
   transition: all 1s ease-in-out;
   z-index: 2;
@@ -22,6 +22,7 @@
   align-items: center;
   height: 100%;
   margin: auto;
+  width: 100%;
   max-width: 1400px;
 }
 
@@ -56,15 +57,16 @@
   font-size: 1.7rem;
   color: rgba(255, 255, 255, 0.65);
   gap: 2rem;
+  margin-left: 4rem;
 }
 
 .nav-right {
-  width: calc(33.334% - 4rem);
+  width: calc(33.334%);
   display: flex;
   align-items: center;
   justify-content: right;
-  padding-right: 4rem;
   gap: 2rem;
+  padding-right: 4rem;
 }
 
 .navbar2 {
@@ -81,6 +83,7 @@
   display: flex;
   align-items: center;
   padding-left: 4rem;
+  z-index: 2;
 }
 
 .backButton i:hover {
@@ -103,6 +106,7 @@
   display: flex;
   align-items: center;
   padding-right: 5rem;
+  z-index: 2;
 }
 
 @media screen and (max-width: 600px) {
