@@ -15,10 +15,11 @@ export default function Searchbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (parts[1] == "shows" || parts[1] === "") {
+    if (parts[1] === "shows" || parts[1] === "") {
       if (term === "") navigate("/");
       else navigate(`/shows/${term}`);
     }
+    // eslint-disable-next-line
   }, [term]);
 
   return (

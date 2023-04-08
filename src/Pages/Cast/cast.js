@@ -20,6 +20,7 @@ export default function Cast() {
       else if (res.error) setError(res.error);
     };
     fetch(id);
+    // eslint-disable-next-line
   }, [id]);
 
   return (

@@ -21,6 +21,7 @@ export default function Cards() {
       else if (res.error) setError(res.error);
     };
     fetch();
+    // eslint-disable-next-line
   }, [query]);
 
   return (

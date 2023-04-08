@@ -18,6 +18,7 @@ export default function FavouriteShows() {
       else if (res.error) setError(res.error);
     };
     fetch();
+    // eslint-disable-next-line
   }, []);
 
   return (
