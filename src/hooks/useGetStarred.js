@@ -4,10 +4,14 @@ import axiosInstance from "./axiosInstance";
 export const useGetStarred = () => {
   const [isPending, setIsPending] = useState(false);
 
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("currentUser"))
+  );
+
   const getStarred = async () => {
     setIsPending(true);
     try {
-      let items = JSON.parse(localStorage.getItem("items"));
+      let items = JSON.parse(localStorage.getItem(JSON.stringify(user.email)));
       let shows = [];
       if (items !== null) {
         for (let i = 0; i < items.length; i++) {

@@ -1,12 +1,13 @@
 import Input from "../../Components/Input/Input";
+import images from "../../constants/images";
 import styles from "./Signup.module.css";
 
 import { useState } from "react";
 
 export default function Signup({ setUser }) {
   const [error, setError] = useState(null);
-  const eyePassword = null;
-  const eyeText = null;
+  const eyePassword = images.eyePassword;
+  const eyeText = images.eyeText;
   const [passwordType, setPasswordType] = useState("password");
   const [authData, setAuthData] = useState({
     name: "",
@@ -47,6 +48,10 @@ export default function Signup({ setUser }) {
       setError("⚠️ User already registered");
     } else {
       setUser({ name, email, password });
+      localStorage.setItem(
+        "currentUser",
+        JSON.stringify({ name, email, password })
+      );
       users.push({ name, email, password });
       localStorage.setItem("users", JSON.stringify(users));
     }

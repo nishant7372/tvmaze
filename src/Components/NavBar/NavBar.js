@@ -23,10 +23,12 @@ export default function NavBar({ user, setUser }) {
               <i class="fa-solid fa-house"></i> &nbsp;
               <span className={styles["fav-name"]}>Home</span>
             </NavLink>
-            <NavLink to="/favourites">
-              <i className="fa-solid fa-heart"></i> &nbsp;
-              <span className={styles["fav-name"]}>Favourites</span>
-            </NavLink>
+            {user && (
+              <NavLink to="/favourites">
+                <i className="fa-solid fa-heart"></i> &nbsp;
+                <span className={styles["fav-name"]}>Favourites</span>
+              </NavLink>
+            )}
           </div>
 
           <div className={styles["nav-right"]}>

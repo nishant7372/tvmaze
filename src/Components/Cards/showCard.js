@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 export default function ShowCard({ data, query }) {
   const [checked, setChecked] = useState(false);
 
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("currentUser"))
+  );
+
   const initialValue = {
     id: null,
     name: "Title: N/A",
@@ -60,10 +64,11 @@ export default function ShowCard({ data, query }) {
     if (data.summary) summary = formatSummary(data.summary);
     if (data.rating.average) rating = "Rating: " + data.rating.average + "/10";
     if (data.image) image = data.image.medium;
-    setChecked(
-      JSON.parse(localStorage.getItem("items")) &&
-        localStorage.getItem("items").includes(id)
-    );
+    if (user)
+      setChecked(
+        JSON.parse(localStorage.getItem(JSON.stringify(user.email))) &&
+          localStorage.getItem(JSON.stringify(user.email)).includes(id)
+      );
     return {
       id,
       name,
@@ -81,7 +86,12 @@ export default function ShowCard({ data, query }) {
   }, [data]);
 
   const addToFav = (id) => {
-    let items = JSON.parse(localStorage.getItem("items")) || [];
+    if (!user) {
+      console.log("Please Log In");
+      return;
+    }
+    let items =
+      JSON.parse(localStorage.getItem(JSON.stringify(user.email))) || [];
     if (items.includes(id)) {
       items = items.filter((item) => item !== id);
       setChecked(false);
@@ -89,7 +99,7 @@ export default function ShowCard({ data, query }) {
       items.push(id);
       setChecked(true);
     }
-    localStorage.setItem("items", JSON.stringify(items));
+    localStorage.setItem(JSON.stringify(user.email), JSON.stringify(items));
   };
 
   return (
@@ -112,12 +122,14 @@ export default function ShowCard({ data, query }) {
           </div>
         </div>
       </Link>
-      <div
-        className={`fav-button ${checked ? "checked" : ""}`}
-        onClick={() => addToFav(show.id)}
-      >
-        <i className="fa-solid fa-heart"></i>
-      </div>
+      {user && (
+        <div
+          className={`fav-button ${checked ? "checked" : ""}`}
+          onClick={() => addToFav(show.id)}
+        >
+          <i className="fa-solid fa-heart"></i>
+        </div>
+      )}
     </div>
   );
 }

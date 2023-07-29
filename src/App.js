@@ -42,7 +42,11 @@ function App() {
           <Route path="/shows/:query" element={<Cards />}></Route>
           <Route path="/show/:query/:id" element={<Show />}></Route>
           <Route path="/:query/:id/cast" element={<Cast />}></Route>
-          <Route path="/favourites" element={<FavouriteShows />}></Route>
+          <Route
+            path="/favourites"
+            element={user ? <FavouriteShows /> : <Navigate to="/login" />}
+          ></Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Router>

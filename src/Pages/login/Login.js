@@ -1,11 +1,12 @@
 import Input from "../../Components/Input/Input";
+import images from "../../constants/images";
 import styles from "./Login.module.css";
 
 import { useEffect, useState } from "react";
 
 export default function LogIn({ setUser }) {
-  const eyePassword = null;
-  const eyeText = null;
+  const eyePassword = images.eyePassword;
+  const eyeText = images.eyeText;
   const [error, setError] = useState(null);
   const [passwordType, setPasswordType] = useState("password");
   const [authData, setAuthData] = useState({ email: "", password: "" });
@@ -79,13 +80,18 @@ export default function LogIn({ setUser }) {
             />
             <div>
               <img
-                src={passwordType === "password" ? eyePassword : eyeText}
+                src={
+                  passwordType === "password"
+                    ? images.eyePassword
+                    : images.eyeText
+                }
                 onClick={showPassword}
                 alt="eye-toggle"
               />
             </div>
           </div>
         </label>
+
         {error ? (
           <div
             style={{

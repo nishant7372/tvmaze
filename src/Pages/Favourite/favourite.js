@@ -5,6 +5,7 @@ import ShowCard from "../../Components/Cards/showCard";
 import Spinner from "../../Components/Cards/Spinner";
 
 import { useGetStarred } from "../../hooks/useGetStarred";
+import images from "../../constants/images";
 
 export default function FavouriteShows() {
   const [data, setData] = useState(null);
@@ -29,15 +30,19 @@ export default function FavouriteShows() {
             <Spinner />
           </div>
         )}
-        {!error && data && <div className="result">Favourite Shows</div>}
+        {!error && data?.length > 0 && (
+          <div className="result">Favourite Shows</div>
+        )}
       </div>
       {error && <div className="error">{error}</div>}
-      {data && (
+      {data?.length > 0 ? (
         <ul className="cardContainer">
           {data.map((show, index) => (
             <ShowCard key={index} data={show.data} query={"favourites"} />
           ))}
         </ul>
+      ) : (
+        <img style={{ filter: "invert(87%)" }} src={images.empty} />
       )}
     </div>
   );
