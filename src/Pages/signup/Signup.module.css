@@ -1,0 +1,135 @@
+.form-container {
+  width: 35rem;
+  margin: 2rem auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.65) 0px 10px 20px -3px;
+}
+
+.Signup-form {
+  display: flex;
+  flex-direction: column;
+  font-size: 2rem;
+  gap: 3rem;
+  padding: 3.5rem;
+  color: white;
+  text-align: center;
+}
+
+.Signup-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  font-weight: 500;
+}
+
+.Signup-form span {
+  align-self: flex-start;
+}
+
+.password-field {
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 4rem;
+}
+
+.password-field img {
+  padding: 0 1rem;
+  width: 1.8rem;
+  height: 2rem;
+  filter: invert(60%);
+  border-radius: 0;
+  cursor: pointer;
+  margin-left: -4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-signup {
+  padding: 1rem;
+  border: 2px solid rgb(124, 58, 237);
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.85);
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.google-signup:hover {
+  color: white;
+}
+
+.googleImg {
+  width: 2.5rem;
+}
+
+.Signup-btn {
+  margin-top: 1rem;
+  font-size: 2rem;
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(124, 58, 237);
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+}
+
+.Signup-btn:hover {
+  background-color: rgb(115, 43, 237);
+  color: white;
+}
+
+.rule {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 40%;
+}
+
+.disabled {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.errorCancelButton {
+  background-color: #666;
+  padding: 0.4rem 1rem;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.errorCancelButton:hover {
+  background-color: #555;
+}
+
+.error {
+  background-color: rgb(243, 30, 30);
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  padding: 0.2rem 1rem;
+  margin-bottom: -1rem;
+  font-size: 1.8rem;
+}
+
+.cross {
+  background-color: grey;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 0.2rem 1rem;
+  margin-bottom: -1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+}

@@ -128,3 +128,18 @@
     transform: scale(1);
   }
 }
+
+.navLink {
+  all: unset;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.navLink:hover {
+  color: white;
+}
+
+.navLink.active {
+  color: white;
+}

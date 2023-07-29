@@ -2,7 +2,7 @@ import styles from "./NavBar.module.css";
 import Searchbar from "./Searchbar";
 import { useNavigate, useLocation, NavLink } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavBar({ user, setUser }) {
   const location = useLocation();
   const parts = location.pathname.split("/");
   const navigate = useNavigate();
@@ -28,11 +28,30 @@ export default function NavBar() {
               <span className={styles["fav-name"]}>Favourites</span>
             </NavLink>
           </div>
-          {(parts[1] === "" || parts[1] === "shows") && (
-            <div className={styles["nav-right"]}>
-              <Searchbar />
-            </div>
-          )}
+
+          <div className={styles["nav-right"]}>
+            {(parts[1] === "" || parts[1] === "shows") && <Searchbar />}
+            {!user ? (
+              <>
+                <NavLink className={styles["navLink"]} to="/login">
+                  LogIn
+                </NavLink>
+                <NavLink className={styles["navLink"]} to="/signup">
+                  Signup
+                </NavLink>
+              </>
+            ) : (
+              <button
+                className={styles["navLink"]}
+                onClick={() => {
+                  localStorage.setItem("currentUser", null);
+                  setUser(null);
+                }}
+              >
+                Logout
+              </button>
+            )}
+          </div>
         </div>
       </div>
       <div className={`${styles["navbar2"]}`}>

@@ -1,0 +1,25 @@
+.input {
+  height: 2.5rem;
+  border-radius: 4px;
+  padding: 1.8rem 0.8rem;
+  font-size: 1.8rem;
+  border-width: 0px;
+  outline: 0;
+  appearance: none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-appearance: none;
+  -webkit-box-shadow: none;
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 1px #2684ff;
+}
+
+.input::placeholder {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}
